@@ -1,4 +1,8 @@
+streamlit
+pandas
+plotly
+python-dotenv
 msal
 requests
-pandas
-openai
+openai>=1.40.0,<2.0.0
+openpyxl
