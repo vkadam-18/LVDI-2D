@@ -2,6 +2,8 @@ import json
 import re
 from llm_prompt import TEXT_INTENT_PROMPT
 import streamlit as st
+from chatbot import AZURE_OPENAI_CHAT_DEPLOYMENT_NAME
+
 
 
 def extract_json(text: str) -> dict:
@@ -29,7 +31,7 @@ def extract_json(text: str) -> dict:
 
 def llm_parse_text_intent(client, question):
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=AZURE_OPENAI_CHAT_DEPLOYMENT_NAME,
         messages=[
             {
                 "role": "user",
@@ -75,4 +77,5 @@ def llm_parse_text_intent(client, question):
     if "filters" in intent:
         intent["filter_values"] = intent.pop("filters")
     
+
     return intent
